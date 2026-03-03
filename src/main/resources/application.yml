@@ -1,0 +1,46 @@
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  freemarker:
+    check-template-location: false
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  redis:
+    #数据库索引
+    database: ${REDIS_DB:1}
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:30000}
+    #连接超时时间
+    timeout: 5000
+    password: ${REDIS_PWD:hx20260209}
+
+yiyitech:
+  cache:
+    lettuce:
+      enabled: true
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:30000}
+    password: ${REDIS_PWD:hx20260209}
+    database: ${REDIS_DB:1}
+    connectTimeout: 5000
+
+# term_summary 三类大缓存专用 Redis（DB2）
+termSummaryRedis:
+  host: ${REDIS_HOST:127.0.0.1}
+  port: ${REDIS_PORT:30000}
+  password: ${REDIS_PWD:hx20260209}
+  database: ${REDIS_TERM_DB:2}
+  timeout: 5000
+
+  # Swagger
+  swagger:
+    enabled: false # 默认关
+    base-package: com.yiyitech
